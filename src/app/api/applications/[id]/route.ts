@@ -1,24 +1,23 @@
 import prisma from "@/lib/prisma";
 import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 export async function GET(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: { id: string } }
 ) {
-  const jobId = params.id;
+  const jobId = context.params.id;
   if (!jobId) {
     return NextResponse.json({ error: "Job Id is required" }, { status: 400 });
   }
 
   try {
     const getApplications = await prisma.application.findMany({
-      where: { jobId: jobId },
-      orderBy: {
-        submittedAt: "desc",
-      },
+      where: { jobId },
+      orderBy: { submittedAt: "desc" },
     });
 
-    if (getApplications.length < 1) {
+    if (getApplications.length === 0) {
       return NextResponse.json(
         { error: "No applications found" },
         { status: 404 }
@@ -35,7 +34,7 @@ export async function GET(
       {
         error:
           process.env.NODE_ENV === "development"
-            ? error
+            ? (error as Error).message
             : "An error occurred while fetching the applications.",
       },
       { status: 500 }

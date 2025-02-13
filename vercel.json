@@ -1,0 +1,44 @@
+{
+  "rewrites": [
+    {
+      "source": "/candidate",
+      "destination": "/candidate/jobs"
+    },
+    {
+      "source": "/candidate/jobs",
+      "destination": "/candidate/jobs"
+    },
+    {
+      "source": "/candidate/apply/[id]",
+      "destination": "/candidate/apply/[id]"
+    },
+    {
+      "source": "/candidate/jobs/[id]",
+      "destination": "/candidate/jobs/[id]"
+    },
+    {
+      "source": "/company/jobs",
+      "destination": "/company/jobs"
+    },
+    {
+      "source": "/company/jobs/new",
+      "destination": "/company/jobs/new"
+    },
+    {
+      "source": "/company/[id]/applications",
+      "destination": "/company/[id]/applications"
+    },
+    {
+      "source": "/sign-in",
+      "destination": "/sign-in"
+    },
+    {
+      "source": "/sign-up",
+      "destination": "/sign-up"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ]
+}
