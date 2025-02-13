@@ -9,11 +9,11 @@
       "destination": "/candidate/jobs"
     },
     {
-      "source": "/candidate/apply/[id]",
+      "source": "/candidate/apply/:id",
       "destination": "/candidate/apply/[id]"
     },
     {
-      "source": "/candidate/jobs/[id]",
+      "source": "/candidate/jobs/:id",
       "destination": "/candidate/jobs/[id]"
     },
     {
@@ -25,16 +25,8 @@
       "destination": "/company/jobs/new"
     },
     {
-      "source": "/company/[id]/applications",
-      "destination": "/company/[id]/applications"
-    },
-    {
-      "source": "/sign-in",
-      "destination": "/sign-in"
-    },
-    {
-      "source": "/sign-up",
-      "destination": "/sign-up"
+      "source": "/company/jobs/:id/applications",
+      "destination": "/company/jobs/[id]/applications"
     },
     {
       "source": "/(.*)",
