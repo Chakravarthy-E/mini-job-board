@@ -48,3 +48,89 @@ A full-stack job board application built with Next.js 15, TypeScript, and Neon D
 ├── types/
 └── validations/
 ```
+
+## 🛠️ Installation
+
+Clone the repository:
+```
+git clone https://github.com/Chakravarthy-E/mini-job-board.git
+cd mini-job-board
+```
+### Install dependencies:
+```
+npm install
+```
+### Set up environment variables:
+```
+.env.example .env.local
+```
+### Configure your environment variables:
+```
+NEON_DATABASE_URL=your_neon_db_url
+```
+
+### Run database migrations:
+```
+npm run db:migrate
+```
+### Start the development server:
+```
+npm run dev
+```
+
+## 📝 Database Schema
+Jobs Table
+```
+model Job {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  category    String
+  location    String
+  salaryRange String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  applications Application[] @relation("JobApplications")
+}
+```
+
+Applications Table
+```
+model Application {
+  id          String   @id @default(uuid())
+  jobId       String
+  name        String
+  email       String
+  resumeLink  String
+  coverLetter String?
+  submittedAt DateTime @default(now())
+
+  Job Job @relation(fields: [jobId], references: [id], name: "JobApplications")
+
+  @@unique([email, jobId])
+}
+```
+
+## 🌐 API Routes (Server Actions)
+
+- POST /api/jobs - Create new job posting
+- GET /api/jobs - Fetch all job posts
+- GET /api/jobs/:id - Fetch specific job details
+- GET /api/applications/:id - Submit job application
+- GET /api/applications/:id - Get Application for Job
+
+
+
+## 💡 Local Development
+To run the project locally:
+### Install dependencies
+```
+npm install
+```
+### Run development server
+```
+npm run dev
+```
+
+
