@@ -2,15 +2,18 @@ import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { z } from "zod";
 
-export async function GET(req: Request, context: { params: { id: string } }) {
+export async function GET(
+  req: Request,
+  { params }: { params: { id: string } }
+) {
   const idSchema = z.string().min(1);
-  const idValidation = idSchema.safeParse(context.params.id);
+  const idValidation = idSchema.safeParse(params.id);
 
   if (!idValidation.success) {
     return NextResponse.json({ error: "Invalid job ID" }, { status: 400 });
   }
 
-  const jobId = context.params.id;
+  const jobId = params.id;
 
   try {
     const getApplications = await prisma.application.findMany({
