@@ -117,7 +117,7 @@ model Application {
 - POST /api/jobs - Create new job posting
 - GET /api/jobs - Fetch all job posts
 - GET /api/jobs/:id - Fetch specific job details
-- GET /api/applications/:id - Submit job application
+- POST /api/applications/:id - Submit job application
 - GET /api/applications/:id - Get Application for Job
 
 
