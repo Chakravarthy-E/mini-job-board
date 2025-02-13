@@ -4,8 +4,10 @@ import { z } from "zod";
 
 export async function GET(
   req: Request,
+  res: Response,
   { params }: { params: { id: string } }
 ) {
+  res.headers.set("Cache-Control", "no-store, max-age=0");
   const idSchema = z.string().min(1);
   const idValidation = idSchema.safeParse(params.id);
 

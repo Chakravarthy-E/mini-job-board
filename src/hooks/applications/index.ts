@@ -16,6 +16,7 @@ export function useGetApplications(id: string) {
       }
       return response.data;
     },
+    staleTime: 0,
     enabled: !!id,
   });
 }

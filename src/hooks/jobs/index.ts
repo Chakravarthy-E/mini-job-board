@@ -13,6 +13,7 @@ export function useGetAllJobs() {
       }
       return response.data;
     },
+    staleTime: 0,
   });
 }
 
@@ -38,6 +39,7 @@ export function useGetJob(id: string | undefined) {
         });
       }
     },
+    staleTime: 0,
     enabled: !!id,
   });
 }

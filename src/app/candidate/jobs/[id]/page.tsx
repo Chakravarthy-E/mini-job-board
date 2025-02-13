@@ -40,9 +40,13 @@ function JobPage() {
           </p>
         </CardContent>
         <CardFooter>
-          <Link href={`/candidate/apply/${job.id}`}>
-            <Button>Apply</Button>
-          </Link>
+          {job?.id ? (
+            <Link href={`/candidate/apply/${job.id}`}>
+              <Button>Apply</Button>
+            </Link>
+          ) : (
+            <p className="text-gray-500">Job details unavailable</p>
+          )}
         </CardFooter>
       </Card>
     </div>
