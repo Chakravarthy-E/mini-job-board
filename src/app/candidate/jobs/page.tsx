@@ -12,7 +12,13 @@ function CandidatePage() {
   const { data, isLoading } = useGetAllJobs();
   const [filteredJobs, setFilteredJobs] = useState<IJob[]>([]);
 
-  const handleFilter = (filters: any) => {
+  interface FilterCriteria {
+    category?: string;
+    location?: string;
+    salaryRange?: string;
+  }
+
+  const handleFilter = (filters: FilterCriteria) => {
     const filtered = data?.jobs.filter((job: IJob) => {
       const matchesCategory = filters.category
         ? job.category === filters.category
